@@ -1,0 +1,64 @@
+Server switch:
+
+Switch>en 
+Switch#config t
+Switch(config)#int fa0/1
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#exit 
+Switch(config)#vtp mode server
+Switch(config)#vtp domain ccna 
+Switch(config)#vtp password 12
+Switch(config)#exit 
+
+Switch#show vlan 
+
+Switch#en 
+Switch#config t
+Switch(config)#vlan 2
+Switch(config-vlan)#name devi 
+Switch(config-vlan)#exit 
+Switch(config)#vlan 3
+Switch(config-vlan)#name parasuraman 
+Switch(config-vlan)#exit 
+Switch(config)#vlan 4
+Switch(config-vlan)#name livewire 
+Switch(config-vlan)#exit 
+Switch(config)#exit 
+
+Switch#show vlan 
+
+Transparent switch:
+
+Switch>en 
+Switch#config t
+Switch(config)#int fa0/1
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#exit 
+Switch(config)#int fa0/2
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#exit 
+
+Switch(config)#vtp mode transparent 
+Setting device to VTP TRANSPARENT mode.
+Switch(config)#vtp domain ccna 
+Switch(config)#vtp password 12
+Setting device VLAN database password to 12
+Switch(config)#exit 
+
+Switch#show vlan 
+
+Client switch:
+
+Switch>en
+Switch#config t
+Switch(config)#int fa0/1
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#exit 
+Switch(config)#vtp mode client 
+Switch(config)#vtp domain ccna 
+Domain name already set to ccna.
+Switch(config)#vtp password 12
+Setting device VLAN database password to 12
+Switch(config)#exit 
+
+Switch#show vlan 
