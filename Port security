@@ -1,0 +1,35 @@
+port security :
+
+note:
+   message both sides 
+
+Switch#show mac-address 
+Switch#en 
+Switch#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#int fa0/2
+Switch(config-if)#switchport mode access 
+Switch(config-if)#switchport port-security 
+Switch(config-if)#switchport port-security ?
+  aging        Port-security aging commands
+  mac-address  Secure mac address
+  maximum      Max secure addresses
+  violation    Security violation mode
+  Switch(config-if)#switchport port-security maximum 1
+Switch(config-if)#switchport port-security violation ?
+  protect   Security violation protect mode
+  restrict  Security violation restrict mode
+  shutdown  Security violation shutdown mode
+Switch(config-if)#switchport port-security violation shutdown 
+Switch(config-if)#switchport port-security mac-address sticky 
+Switch(config-if)#exit 
+Switch(config)#exit 
+
+Switch#show port-security 
+
+Switch#en 
+Switch#config t
+Switch(config)#int fa0/2
+Switch(config-if)#shutdown 
+Switch(config-if)#no shut 
+Switch(config-if)#exit
