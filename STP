@@ -1,0 +1,21 @@
+Spanning tree protocol :STP 
+
+Switch>show spanning-tree
+
+  Root ID    Priority    32769
+        Switch>show mac-address 
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0009.7C73.4BEB
+
+To change bridge port :
+
+Switch(config)#spanning-tree vlan 1 priority ?
+
+  <0-61440>  bridge priority in increments of 4096
+
+
+  0     4096  8192  12288 16384 20480 24576 28672
+  32768 36864 40960 45056 49152 53248 57344 61440
+
+Switch(config)spanning-tree vlan 1 priority 4096
