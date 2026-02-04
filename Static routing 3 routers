@@ -1,0 +1,51 @@
+R1:
+
+Router>en
+Router#config t
+Router(config)#int gig0/0/0
+Router(config-if)#ip address 1.0.0.100 255.0.0.0 
+Router(config-if)#no shut 
+Router(config-if)#exit 
+Router(config)#int gig0/0/1
+Router(config-if)#ip address 3.0.0.1 255.0.0.0
+Router(config-if)#no shut 
+Router(config-if)#exit 
+
+Router(config)#ip route 2.0.0.0 255.0.0.0 3.0.0.2
+
+Router(config)#ip route 5.0.0.0 255.0.0.0 3.0.0.2
+
+R2:
+
+Router>en 
+Router#config t
+Router(config)#int gig0/0/0
+Router(config-if)#ip address 2.0.0.100 255.0.0.0
+Router(config-if)#no shut 
+Router(config-if)#exit 
+Router(config)#int gig0/0/1
+Router(config-if)#ip address 3.0.0.2 255.0.0.0
+Router(config-if)#no shut 
+Router(config-if)#exit 
+
+Router(config)#ip route 1.0.0.0 255.0.0.0 3.0.0.1
+
+R3:
+
+Router>enable
+Router#configure terminal
+Router(config)#interface Serial0/1/0
+Router(config-if)#exit
+Router(config)#interface Serial0/1/0
+Router(config-if)#ip address 4.0.0.2 255.0.0.0
+Router(config-if)#ip address 4.0.0.2 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0/0
+ip address 5.0.0.100 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit 
+Router(config)#ip route 2.0.0.0 255.0.0.0 4.0.0.1
+
+Router(config)#ip route 1.0.0.0 255.0.0.0 4.0.0.1
+
