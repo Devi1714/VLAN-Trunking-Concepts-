@@ -1,0 +1,23 @@
+Router 1:
+
+Router>enable
+Router#configure terminal
+Router(config)#interface GigabitEthernet0/0/0
+Router(config-if)#ip address 192.168.10.100 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0/1
+Router(config-if)#ip address 200.0.0.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit 
+
+Router(config)#int gig0/0/0
+Router(config-if)#ip nat inside 
+Router(config-if)#exit 
+Router(config)#int gig0/0/1
+Router(config-if)#ip nat outside 
+Router(config-if)#exit 
+Router(config)#ip nat inside source static 192.168.10.1 200.0.0.1
+Router(config)#ip nat inside source static 192.168.10.2 200.0.0.2
+Router(config)#exit 
+Router#show ip nat translations 
